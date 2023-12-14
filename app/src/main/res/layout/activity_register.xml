@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="406dp"
+        android:layout_height="349dp"
+        app:srcCompat="@drawable/intersect"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="3dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:text="Register"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:hint="USERNAME"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_regular"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="437dp"
+        android:background="@drawable/shape_login"
+        android:paddingLeft="15sp"
+        android:layout_marginBottom="15sp"
+        android:padding="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:hint="PASSWORD"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_regular"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="520dp"
+        android:background="@drawable/shape_login"
+        android:paddingLeft="15sp"
+        android:padding="10sp"
+        android:layout_marginBottom="40sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"/>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:textSize="25sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="REGISTER"
+        android:backgroundTint="#2E4F4F"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"
+        />
+
+</LinearLayout>
