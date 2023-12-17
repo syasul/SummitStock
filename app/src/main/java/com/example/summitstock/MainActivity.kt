@@ -6,19 +6,21 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import androidx.lifecycle.ViewModelProvider
+import com.example.summitstock.Room.AppRepository
+import com.example.summitstock.Room.User.AuthViewModel
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var btnRegisterActivity: Button
+
+    private lateinit var authViewModel: AuthViewModel
+    private lateinit var buttonLogin: Button
+    private lateinit var usernameEditText: String
+    private lateinit var passwordEditText: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        btnRegisterActivity = findViewById(R.id.btn_reg)
-        btnRegisterActivity.setOnClickListener(this)
-
 
     }
 
@@ -35,8 +37,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     }
-    private fun determineUserType(username: String): Boolean {
-        return username=="Admin"
-    }
+
 
 }

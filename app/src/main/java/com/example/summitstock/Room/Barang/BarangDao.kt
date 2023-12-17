@@ -21,6 +21,6 @@ interface BarangDao {
     @Delete
     suspend fun deleteBarang(barang: Barang)
 
-    @Query("SELECT * FROM barangs WHERE namabarang LIKE :searchQuery")
+    @Query("SELECT * FROM barangs WHERE namabarang LIKE '%' || :searchQuery || '%'")
     suspend fun searchBarang(searchQuery: String): List<Barang>
 }
