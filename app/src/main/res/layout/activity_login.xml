@@ -25,7 +25,7 @@
         android:text="Login"/>
 
     <EditText
-        android:id="@+id/usernameEditText"
+        android:id="@+id/Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
@@ -42,7 +42,7 @@
         android:layout_marginLeft="10sp"/>
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
@@ -62,31 +62,13 @@
         android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonLogin"
+        android:id="@+id/Login"
         android:fontFamily="@font/poppins_regular"
         android:text="LOGIN"
         android:backgroundTint="#2E4F4F"
         android:layout_marginRight="10sp"
         android:layout_marginLeft="10sp"
         />
-
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Don't have account?"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/btn_reg"
-        android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:backgroundTint="@color/white"
-        android:gravity="center"
-        android:text="Register"
-        android:textColor="@color/black"
-        android:textSize="8sp" />
 
 
 </LinearLayout>

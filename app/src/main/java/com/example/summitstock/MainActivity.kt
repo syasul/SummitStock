@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import com.example.summitstock.Room.User.AuthViewModel
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
-    private lateinit var authViewModel: AuthViewModel
     private lateinit var buttonLogin: Button
     private lateinit var buttonUser: Button
     private lateinit var usernameEditText: String

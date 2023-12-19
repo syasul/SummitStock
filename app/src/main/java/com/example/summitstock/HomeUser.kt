@@ -24,7 +24,7 @@ class HomeUser : AppCompatActivity(), View.OnClickListener {
         if (v != null) {
             when(v.id) {
                 R.id.buttonAdmin -> run {
-                    val intentBiasa = Intent(this@HomeUser, AdminCatalog::class.java)
+                    val intentBiasa = Intent(this@HomeUser, Login::class.java)
                     startActivity(intentBiasa)
                 }
             }
