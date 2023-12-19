@@ -32,11 +32,13 @@
 
 
             />
-        <ImageView
-
+        <ImageButton
             android:src="@drawable/icon_logout"
+            android:id="@+id/buttonAdmin"
+            android:background="#00ffffff"
             android:gravity="right"
             android:padding="15dp" />
+
     </TableRow>
 
 

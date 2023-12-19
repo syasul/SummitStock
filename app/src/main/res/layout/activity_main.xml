@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="#fff"
+    android:orientation="vertical"
+    android:paddingBottom="30dp">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="349dp"
         android:src="@drawable/intersect"
         tools:layout_editor_absoluteX="2dp"
@@ -18,44 +20,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="50sp"
+        android:textSize="40dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textStyle="bold"
+        android:text="Wellcome"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30dp"
         android:fontFamily="@font/poppins_regular"
         android:textStyle="bold"
-        android:text="Login"/>
+        android:text="Summit Stock"/>
 
-    <EditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:hint="USERNAME"
-        android:textSize="20sp"
-        android:fontFamily="@font/poppins_regular"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="437dp"
-        android:background="@drawable/shape_login"
-        android:paddingLeft="15sp"
-        android:layout_marginBottom="15sp"
-        android:padding="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginLeft="10sp"/>
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:hint="PASSWORD"
-        android:textSize="20sp"
-        android:fontFamily="@font/poppins_regular"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="520dp"
-        android:background="@drawable/shape_login"
-        android:paddingLeft="15sp"
-        android:padding="10sp"
-        android:layout_marginBottom="40sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginLeft="10sp"/>
 
     <Button
         android:textSize="20dp"
@@ -63,29 +42,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/buttonLogin"
         android:fontFamily="@font/poppins_regular"
-        android:text="LOGIN"
+        android:text="LOGIN as Admin"
         android:backgroundTint="#2E4F4F"
         android:layout_marginRight="10sp"
         android:layout_marginLeft="10sp"
         />
 
-    <TextView
-        android:id="@+id/register"
+    <Button
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Don't have account?"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/btn_reg"
-        android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:backgroundTint="@color/white"
-        android:gravity="center"
-        android:text="Register"
-        android:textColor="@color/black"
-        android:textSize="8sp" />
+        android:id="@+id/buttonUser"
+        android:fontFamily="@font/poppins_regular"
+        android:text="LOGIN as User"
+        android:backgroundTint="#2E4F4F"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"
+        />
 
 
 </LinearLayout>

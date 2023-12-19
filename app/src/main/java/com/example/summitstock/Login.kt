@@ -7,24 +7,16 @@ import android.view.View
 import android.widget.Button
 import com.example.summitstock.Room.User.AuthViewModel
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-
+class Login : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var authViewModel: AuthViewModel
     private lateinit var buttonLogin: Button
-    private lateinit var buttonUser: Button
     private lateinit var usernameEditText: String
     private lateinit var passwordEditText: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        buttonLogin = findViewById(R.id.buttonLogin)
-        buttonLogin.setOnClickListener(this)
-
-        buttonUser = findViewById(R.id.buttonUser)
-        buttonUser.setOnClickListener(this)
+        setContentView(R.layout.activity_login)
 
     }
 
@@ -36,19 +28,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(intent)
                 }
             }
-            when(v.id) {
-                R.id.buttonUser-> run {
-                    val intent = Intent(this,HomeUser::class.java)
-                    startActivity(intent)
-                }
-            }
         }
 
 
 
     }
-
-
-
 
 }
