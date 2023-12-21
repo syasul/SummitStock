@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -25,13 +26,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         buttonUser = findViewById(R.id.buttonUser)
         buttonUser.setOnClickListener(this)
 
+
+
     }
+
+
+
 
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {
                 R.id.buttonLogin-> run {
-                    val intent = Intent(this,Login::class.java)
+                    val intent = Intent(this@MainActivity,Login::class.java)
                     startActivity(intent)
                 }
             }
@@ -46,6 +52,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     }
+
+
 
 
 

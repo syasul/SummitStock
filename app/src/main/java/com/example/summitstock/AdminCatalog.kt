@@ -3,13 +3,19 @@ package com.example.summitstock
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 class AdminCatalog : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var buttonAdmin : ImageButton
+    private lateinit var updateButton: ImageButton
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +41,21 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
         buttonAdmin = findViewById(R.id.buttonAdmin)
         buttonAdmin.setOnClickListener(this)
 
+
+
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            val bottomSheetFragment = MyBottomSheetFragment()
+            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+
+        }
+
+        // Inside your activity or fragment
+        val bottomSheetFragment = MyBottomSheetFragment()
+        bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+
+
+
     }
     override fun onClick(v: View?) {
         if (v != null) {
@@ -46,6 +67,8 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+
 
 
 }

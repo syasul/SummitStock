@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Image View for Displaying Uploaded Image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/imagessb"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Button to Trigger Image Selection -->
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Image"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Name EditText -->
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name Barang"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/btnSelectImage"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Email EditText -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Deskripsi Barang"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/etName"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Password EditText -->
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Jumlah Barang"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/etEmail"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIMPAN"
+        android:layout_below="@+id/etPassword"/>
+
+</RelativeLayout>
