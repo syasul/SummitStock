@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
-    tools:context=".AdminCatalog">
+    android:id="@+id/fab2">
 
     <!-- Image View for Displaying Uploaded Image -->
     <ImageView

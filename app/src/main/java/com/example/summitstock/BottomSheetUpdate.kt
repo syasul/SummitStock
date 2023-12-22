@@ -16,18 +16,6 @@ class BottomSheetUpdate : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.activity_admin_catalog, container, false)
-
-        val updateButton : ImageButton = view.findViewById(R.id.updateButton)
-        updateButton.setOnClickListener {
-            // Handle ImageButton click event
-            // For example, you can dismiss the bottom sheet
-
-            val intent = Intent(context, AdminCatalog::class.java)
-            startActivity(intent)
-
-            dismiss()
-        }
 
         return inflater.inflate(R.layout.fragment_bottom_sheet_update, container, false)
     }
