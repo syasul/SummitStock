@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login"
+    android:background="#fff"
     android:orientation="vertical"
     >
 
@@ -29,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:hint="USERNAME"
+        android:hint="username"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_regular"
         tools:layout_editor_absoluteX="32dp"
@@ -46,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:hint="PASSWORD"
+        android:hint="password"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_regular"
         tools:layout_editor_absoluteX="-3dp"
@@ -54,6 +55,7 @@
         android:background="@drawable/shape_login"
         android:paddingLeft="15sp"
         android:padding="10sp"
+        android:inputType="textPassword"
         android:layout_marginBottom="40sp"
         android:layout_marginRight="10sp"
         android:layout_marginLeft="10sp"/>

@@ -12,24 +12,33 @@
     <!-- Header -->
 
     <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:background="#ffffff"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
-            android:fontFamily="@font/poppins_bold"
+            android:paddingLeft="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:text="Hello, Will"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Hello, admin"
             android:textColor="#000"
-            android:padding="10dp"
             android:textSize="25dp" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <ImageButton
-            android:src="@drawable/icon_logout"
             android:id="@+id/buttonAdmin"
+            android:layout_width="wrap_content"
             android:background="#00ffffff"
             android:gravity="right"
             android:padding="15dp"
-            android:layout_marginLeft="115dp"/>
+            android:src="@drawable/icon_logout" />
     </TableRow>
 
     <!-- Search Input -->
@@ -48,6 +57,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtSearch"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"
@@ -136,24 +146,27 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/fab2"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/icon_update"
                         android:background="@drawable/round_update"
                         android:layout_marginBottom="20dp" />
 
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
                     <ImageButton
                         android:id="@+id/deleteButton"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/icon_delete"
                         android:background="@drawable/round_update"
                         android:layout_marginTop="2dp"/>
@@ -173,7 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
         app:srcCompat="@drawable/icon_add"
         app:backgroundTint="#86A789"
         app:elevation="6dp" />
