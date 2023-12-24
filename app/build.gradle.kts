@@ -51,7 +51,6 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 
     implementation("androidx.room:room-runtime:2.6.1")
-    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
     kapt("androidx.room:room-compiler:2.6.1")
 
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
@@ -63,6 +62,11 @@ dependencies {
 
     implementation("androidx.fragment:fragment-ktx:1.4.0")
     implementation("androidx.activity:activity-ktx:1.3.1")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-livedata:2.4.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

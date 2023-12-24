@@ -1,10 +1,12 @@
-package com.example.summitstock.Room.Barang
+package com.example.summitstock.Room.db
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.summitstock.Room.model.Barang
+
 @Dao
 interface BarangDao {
     @Insert

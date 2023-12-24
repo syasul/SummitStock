@@ -1,7 +1,7 @@
 package com.example.summitstock.Room
 
-import com.example.summitstock.Room.Barang.Barang
-import com.example.summitstock.Room.Barang.BarangDao
+import com.example.summitstock.Room.db.BarangDao
+import com.example.summitstock.Room.model.Barang
 
 class AppRepository(private val barangDao: BarangDao) {
     suspend fun getAllBarang(): List<Barang> = barangDao.getAllBarang()

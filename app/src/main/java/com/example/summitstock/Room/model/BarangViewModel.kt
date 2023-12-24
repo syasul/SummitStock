@@ -1,33 +1,28 @@
-package com.example.summitstock.Room.Barang
+package com.example.summitstock.Room.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.summitstock.Room.AppRepository
 import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
+import com.example.summitstock.Room.AppRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class BarangViewModel(private val repository: AppRepository) : ViewModel() {
 
-    private val _allBarang = MutableLiveData<List<Barang>>()
-    val allBarang: LiveData<List<Barang>> get() = _allBarang
+    private val _barangList = MutableLiveData<List<Barang>>()
+    val barangList: LiveData<List<Barang>> get() = _barangList
+
+    init {
+        // Load data barang pada inisialisasi
+        getAllBarang()
+    }
 
     fun getAllBarang() {
         viewModelScope.launch {
-            try {
-                // Use withContext to switch to IO dispatcher for database operations
-                val result = withContext(Dispatchers.IO) {
-                    repository.getAllBarang()
-                }
-
-                // Use postValue to update LiveData on the main thread
-                _allBarang.postValue(result)
-            } catch (e: Exception) {
-                // Handle exceptions if any
-                e.printStackTrace()
-            }
+            _barangList.value = repository.getAllBarang()
         }
     }
 
@@ -36,6 +31,7 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
                 repository.insertBarang(barang)
+                Log.d("InsertData", "Data inserted successfully: $barang")
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.example.summitstock.Room.Barang
+package com.example.summitstock.Room.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

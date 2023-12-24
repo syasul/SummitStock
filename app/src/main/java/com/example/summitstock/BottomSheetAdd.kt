@@ -14,19 +14,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.viewModels
-import com.example.summitstock.Room.Barang.Barang
-import com.example.summitstock.Room.Barang.BarangViewModel
-import com.example.summitstock.databinding.FragmentBottomSheetBinding
+import com.example.summitstock.Room.model.Barang
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetAdd : BottomSheetDialogFragment() {
-//    image upload
+    //    image upload
     private val PICK_IMAGE_REQUEST = 1
     private var imageView: ImageView? = null
     private var selectedImageUri: Uri? = null
 
-//    increment decreement
+    //    increment decreement
     private var counterValue = 0
     private lateinit var counterTextView: TextView
 

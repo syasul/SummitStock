@@ -7,23 +7,35 @@ import android.view.View
 import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.summitstock.Room.Barang.BarangViewModel
-import com.google.android.ads.mediationtestsuite.viewmodels.ViewModelFactory
+import androidx.room.Room
+import com.example.summitstock.Room.AppRepository
+import com.example.summitstock.Room.db.AppDatabase
+import com.example.summitstock.Room.model.BarangViewModel
+import com.example.summitstock.Room.model.BarangViewModelFactory
+//import com.google.android.ads.mediationtestsuite.viewmodels.ViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 class AdminCatalog : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var buttonAdmin : ImageButton
-
-    val barangViewModel: BarangViewModel by lazy {
-        ViewModelProvider(this, ViewModelFactory(repository)).get(BarangViewModel::class.java)
-    }
+    private lateinit var appRepository: AppRepository
+    lateinit var barangViewModel: BarangViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_catalog)
+        val db = AppDatabase.invoke(this)
 
+        // Inisialisasi BarangDao
+        val barangDao = db.barangDao()
+
+        // Inisialisasi AppRepository dengan BarangDao
+        appRepository = AppRepository(barangDao)
+
+        // Inisialisasi ViewModel dengan Factory
+        barangViewModel = ViewModelProvider(this, BarangViewModelFactory(appRepository))
+            .get(BarangViewModel::class.java)
         val editText: TextInputEditText = findViewById(R.id.txtSearch)
 
 
@@ -52,11 +64,11 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
             bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }
 
-        val fab2: ImageButton = findViewById(R.id.fab2)
-        fab2.setOnClickListener {
-            val bottomSheetFragment = BottomSheetUpdate()
-            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
-        }
+//        val fab2: ImageButton = findViewById(R.id.fab2)
+//        fab2.setOnClickListener {
+//            val bottomSheetFragment = BottomSheetUpdate()
+//            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+//        }
 
     }
     override fun onClick(v: View?) {

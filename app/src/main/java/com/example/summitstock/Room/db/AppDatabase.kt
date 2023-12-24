@@ -1,11 +1,10 @@
-package com.example.summitstock.Room
+package com.example.summitstock.Room.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.summitstock.Room.Barang.Barang
-import com.example.summitstock.Room.Barang.BarangDao
+import com.example.summitstock.Room.model.Barang
 
 @Database(entities = [Barang::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
