@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.summitstock.Room.Barang.BarangViewModel
+import com.google.android.ads.mediationtestsuite.viewmodels.ViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 class AdminCatalog : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var buttonAdmin : ImageButton
+
+    val barangViewModel: BarangViewModel by lazy {
+        ViewModelProvider(this, ViewModelFactory(repository)).get(BarangViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

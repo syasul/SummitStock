@@ -51,6 +51,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
     kapt("androidx.room:room-compiler:2.6.1")
 
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
@@ -59,6 +60,9 @@ dependencies {
 //    install coroutins
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+
+    implementation("androidx.fragment:fragment-ktx:1.4.0")
+    implementation("androidx.activity:activity-ktx:1.3.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
