@@ -6,9 +6,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.summitstock.Room.AppRepository
+import com.example.summitstock.Room.BarangAdapter
 import com.example.summitstock.Room.db.AppDatabase
 import com.example.summitstock.Room.model.BarangViewModel
 import com.example.summitstock.Room.model.BarangViewModelFactory
@@ -20,11 +24,13 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var buttonAdmin : ImageButton
     private lateinit var appRepository: AppRepository
-    lateinit var barangViewModel: BarangViewModel
+     lateinit var barangViewModel: BarangViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_catalog)
+
+        // Inisialisasi database
         val db = AppDatabase.invoke(this)
 
         // Inisialisasi BarangDao
@@ -36,22 +42,26 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
         // Inisialisasi ViewModel dengan Factory
         barangViewModel = ViewModelProvider(this, BarangViewModelFactory(appRepository))
             .get(BarangViewModel::class.java)
+
         val editText: TextInputEditText = findViewById(R.id.txtSearch)
-
-
         editText.hint = "Cari"
         editText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                // Fokus diperoleh, atur hint sesuai kebutuhan
                 editText.hint = "Cari"
             } else {
-                // Fokus kehilangan, atur hint kembali ke teks asli
                 editText.hint = "Cari"
             }
-
-
         }
 
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val adapter = BarangAdapter(emptyList())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        barangViewModel.barangList.observe(this, Observer { barangList ->
+            // Handle the observed data, for example, update the adapter
+            adapter.setData(barangList)
+        })
 //        button
         buttonAdmin = findViewById(R.id.buttonAdmin)
         buttonAdmin.setOnClickListener(this)
@@ -70,6 +80,7 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
 //            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
 //        }
 
+
     }
     override fun onClick(v: View?) {
         if (v != null) {
@@ -81,8 +92,4 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
-
-
-
 }

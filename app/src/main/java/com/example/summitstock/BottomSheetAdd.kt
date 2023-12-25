@@ -90,8 +90,12 @@ class BottomSheetAdd : BottomSheetDialogFragment() {
         val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
         val filePath = columnIndex?.let { cursor.getString(it) }
         cursor?.close()
+
+        Log.d("ImagePath", "Path: $filePath")
+
         return filePath
     }
+
 
     //    increement decreement
     private fun incrementCounter() {
@@ -117,7 +121,7 @@ class BottomSheetAdd : BottomSheetDialogFragment() {
             val jumlahStok = counterValue
             val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toDouble()
 
-            val imagePath = selectedImageUri?.path
+            val imagePath = selectedImageUri?.toString() ?: ""
 
             val barang = Barang(
                 namabarang = namaBarang,

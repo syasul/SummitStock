@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class BarangViewModel(private val repository: AppRepository) : ViewModel() {
-
     private val _barangList = MutableLiveData<List<Barang>>()
     val barangList: LiveData<List<Barang>> get() = _barangList
 
