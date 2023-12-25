@@ -30,6 +30,7 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
                 repository.insertBarang(barang)
+                getAllBarang()
                 Log.d("InsertData", "Data inserted successfully: $barang")
             }
         }

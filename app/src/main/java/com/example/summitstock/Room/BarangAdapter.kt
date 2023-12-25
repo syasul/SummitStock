@@ -25,8 +25,6 @@ class BarangAdapter(private var dataList: List<Barang>) : RecyclerView.Adapter<B
         Glide.with(holder.itemView.context)
             .load(barang.image) // Replace with the actual URL or resource ID
             .into(holder.gambarBarang)
-
-
 //        holder text
         holder.namaBarang.text = barang.namabarang
         holder.deskripsiBarang.text = barang.deskripsi

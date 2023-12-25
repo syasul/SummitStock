@@ -22,11 +22,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
 class AdminCatalog : AppCompatActivity(), View.OnClickListener {
-
     private lateinit var buttonAdmin : ImageButton
     private lateinit var appRepository: AppRepository
-     lateinit var barangViewModel: BarangViewModel
-
+    lateinit var barangViewModel: BarangViewModel
+    lateinit var adapter: BarangAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_catalog)
@@ -44,6 +43,11 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
         barangViewModel = ViewModelProvider(this, BarangViewModelFactory(appRepository))
             .get(BarangViewModel::class.java)
 
+        setupAdapter()
+        getdata()
+
+
+
         val editText: TextInputEditText = findViewById(R.id.txtSearch)
         editText.hint = "Cari"
         editText.setOnFocusChangeListener { _, hasFocus ->
@@ -54,18 +58,14 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val adapter = BarangAdapter(emptyList())
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        barangViewModel.barangList.observe(this, Observer { barangList ->
-            // Handle the observed data, for example, update the adapter
-            adapter.setData(barangList)
-        })
 //        button
         buttonAdmin = findViewById(R.id.buttonAdmin)
-        buttonAdmin.setOnClickListener(this)
+//        buttonAdmin.setOnClickListener(this)
+        buttonAdmin.setOnClickListener {
+            val intentBiasa = Intent(this@AdminCatalog, Login::class.java)
+            startActivity(intentBiasa)
+        }
 
 
 
@@ -93,5 +93,17 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+    fun setupAdapter(){
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        adapter = BarangAdapter(emptyList())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+    fun getdata(){
+        barangViewModel.barangList.observe(this, Observer { barangList ->
+            // Handle the observed data, for example, update the adapter
+            adapter.setData(barangList)
+        })
     }
 }
