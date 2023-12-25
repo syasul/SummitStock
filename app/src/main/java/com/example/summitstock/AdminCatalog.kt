@@ -14,6 +14,7 @@ import androidx.room.Room
 import com.example.summitstock.Room.AppRepository
 import com.example.summitstock.Room.BarangAdapter
 import com.example.summitstock.Room.db.AppDatabase
+import com.example.summitstock.Room.model.Barang
 import com.example.summitstock.Room.model.BarangViewModel
 import com.example.summitstock.Room.model.BarangViewModelFactory
 //import com.google.android.ads.mediationtestsuite.viewmodels.ViewModelFactory
@@ -79,6 +80,7 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener {
 //            val bottomSheetFragment = BottomSheetUpdate()
 //            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
 //        }
+
 
 
     }
