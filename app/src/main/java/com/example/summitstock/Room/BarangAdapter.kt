@@ -3,14 +3,20 @@ package com.example.summitstock.Room
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.summitstock.AdminCatalog
 import com.example.summitstock.R
 import com.example.summitstock.Room.model.Barang
 
-class BarangAdapter(private var dataList: List<Barang>) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
+class BarangAdapter(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(barang: Barang)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_barang, parent, false)
@@ -19,8 +25,9 @@ class BarangAdapter(private var dataList: List<Barang>) : RecyclerView.Adapter<B
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var barang = dataList[position]
+        holder.bind(barang)
 
-        // Setel data pada elemen UI di sini
+
 //        holder image
         Glide.with(holder.itemView.context)
             .load(barang.image) // Replace with the actual URL or resource ID
@@ -30,18 +37,47 @@ class BarangAdapter(private var dataList: List<Barang>) : RecyclerView.Adapter<B
         holder.deskripsiBarang.text = barang.deskripsi
         holder.stokBarang.text = barang.stok.toString()
         holder.hargaBarang.text = "RP. ${barang.harga},- / day"
+
+
     }
 
     override fun getItemCount(): Int {
         return dataList.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val gambarBarang: ImageView = itemView.findViewById(R.id.gambarBarang)
         val namaBarang: TextView = itemView.findViewById(R.id.namaBarang)
         val deskripsiBarang: TextView = itemView.findViewById(R.id.deskripsiBarang)
         val stokBarang: TextView = itemView.findViewById(R.id.stokBarang)
         val hargaBarang: TextView = itemView.findViewById(R.id.hargaBarang)
+        val updateButton: ImageButton = itemView.findViewById(R.id.fab2)
+
+        init {
+            // Add a click listener to the update button
+            updateButton.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    itemClickListener.onItemClick(dataList[position])
+                }
+            }
+        }
+
+        fun bind(barang: Barang) {
+            // Bind data to UI elements
+            Glide.with(itemView.context)
+                .load(barang.image)
+                .into(gambarBarang)
+            namaBarang.text = barang.namabarang
+            deskripsiBarang.text = barang.deskripsi
+            stokBarang.text = barang.stok.toString()
+            hargaBarang.text = "RP. ${barang.harga},- / day"
+
+            // Set click listener on the update button
+            updateButton.setOnClickListener {
+                itemClickListener.onItemClick(barang)
+            }
+        }
         // Deklarasikan dan inisialisasikan elemen UI lainnya di sini
     }
 

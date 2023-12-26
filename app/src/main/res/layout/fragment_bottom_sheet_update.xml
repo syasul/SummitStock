@@ -5,55 +5,91 @@
     android:padding="16dp"
     android:id="@+id/fab2">
 
-    <!-- Image View for Displaying Uploaded Image -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/imagessb"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:scaleType="centerCrop"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        />
+        android:layout_marginBottom="8dp"/>
 
     <!-- Button to Trigger Image Selection -->
     <Button
-        android:id="@+id/btnSelectImage"
+        android:id="@+id/uploadBtnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Image"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="5dp"/>
 
     <!-- Name EditText -->
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/namaBarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name Barang"
+        android:hint="Nama Barang"
         android:inputType="textPersonName"
-        android:layout_below="@+id/btnSelectImage"
+        android:layout_below="@+id/uploadBtnAdd"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
     <!-- Email EditText -->
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/descBarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Deskripsi Barang"
         android:inputType="textEmailAddress"
-        android:layout_below="@+id/etName"
+        android:layout_below="@+id/namaBarang"
         android:layout_marginBottom="16dp"/>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:id="@+id/jumlahStok"
+
+        android:layout_below="@+id/descBarang"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/counterTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/incrementButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_below="@id/counterTextView"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_alignParentEnd="true"/>
+
+        <Button
+            android:id="@+id/decrementButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_below="@id/counterTextView"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_alignParentStart="true"/>
+
+    </RelativeLayout>
 
     <!-- Password EditText -->
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/hargaBarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Jumlah Barang"
-        android:inputType="textPersonName"
-        android:layout_below="@+id/etEmail"
+        android:hint="Harga Barang"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/jumlahStok"
         android:layout_marginBottom="16dp"/>
 
     <!-- Submit Button -->
@@ -61,7 +97,7 @@
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SIMPAN"
-        android:layout_below="@+id/etPassword"/>
+        android:layout_below="@id/hargaBarang"
 
+        android:text="Update" />
 </RelativeLayout>
