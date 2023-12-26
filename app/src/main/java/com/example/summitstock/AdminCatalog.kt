@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
 import com.example.summitstock.Room.AppRepository
 import com.example.summitstock.Room.BarangAdapter
 import com.example.summitstock.Room.db.AppDatabase
@@ -25,7 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.OnItemClickListener {
+class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.OnItemClickListener, BarangAdapter.OnClickDelete {
     private lateinit var buttonAdmin : ImageButton
     private lateinit var appRepository: AppRepository
     lateinit var barangViewModel: BarangViewModel
@@ -53,8 +52,6 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
 
         setupAdapter()
         getdata()
-
-
 
         val editText: TextInputEditText = findViewById(R.id.txtSearch)
         editText.hint = "Cari"
@@ -125,7 +122,7 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
     }
     fun setupAdapter(){
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        adapter = BarangAdapter(emptyList(), this)
+        adapter = BarangAdapter(emptyList(), this, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
@@ -146,6 +143,14 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
         // Misalnya, tampilkan hasil pencarian atau lakukan operasi lainnya
         Toast.makeText(this, "Searching for: $query", Toast.LENGTH_SHORT).show()
     }
+
+    suspend fun onItemClickDelete(barang: Barang) {
+        // Tambahkan logika penghapusan barang di sini
+        appRepository.deleteBarang(barang)
+    }
+
+
+    // Observer untuk memperbarui tampilan setelah perubahan
 
 
 

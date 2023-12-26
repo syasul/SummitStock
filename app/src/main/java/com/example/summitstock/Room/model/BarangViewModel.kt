@@ -41,6 +41,8 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
                 repository.updateBarang(barang)
+                getAllBarang()
+                Log.d("Update Data", "Data Update successfully: $barang")
             }
         }
     }
@@ -50,6 +52,7 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
                 repository.deleteBarang(barang)
+                getAllBarang()
             }
         }
     }

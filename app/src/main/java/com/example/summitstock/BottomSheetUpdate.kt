@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.summitstock.Room.model.Barang
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -29,7 +31,6 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     private var selectedImageUri: Uri? = null
     private var counterValue = 0
     private lateinit var counterTextView: MaterialTextView
-
 
     companion object {
         fun newInstance(barang: Barang): BottomSheetUpdate {
@@ -46,14 +47,23 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
         val namaBarangEditText: EditText = view.findViewById(R.id.namaBarang)
         val descBarangEditText: EditText = view.findViewById(R.id.descBarang)
         val hargaBarangEditText: EditText = view.findViewById(R.id.hargaBarang)
+
+        val submitButton: Button = view.findViewById(R.id.btnSubmit)
+        submitButton.setOnClickListener {
+            updateData()
+        }
+
+        val uploadBtnUpdate: Button = view.findViewById(R.id.uploadBtn)
+        uploadBtnUpdate.setOnClickListener {
+            openGallery()
+        }
+
         imageView = view.findViewById(R.id.imageView)
 
         // Set existing data to the views
         namaBarangEditText.setText(barang.namabarang)
         descBarangEditText.setText(barang.deskripsi)
         hargaBarangEditText.setText(barang.harga.toString())
-//        counterValue = barang.stok
-//        updateCounterText()
 
         val incrementButton: Button = view.findViewById(R.id.incrementButton)
         val decrementButton: Button = view.findViewById(R.id.decrementButton)
@@ -92,9 +102,6 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
         // ... kode lainnya
     }
 
-
-
-
     private fun incrementCounter() {
         if (::counterTextView.isInitialized) {
             counterValue++
@@ -125,6 +132,73 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
                 selectedImageUri
             )
             imageView?.setImageBitmap(bitmap)
+        }
+    }
+
+    private fun updateData() {
+        try {
+            val namaBarang = view?.findViewById<EditText>(R.id.namaBarang)?.text.toString()
+            val descBarang = view?.findViewById<EditText>(R.id.descBarang)?.text.toString()
+            val jumlahStok = counterValue
+            val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toDouble()
+
+            val imagePath = if (selectedImageUri != null) {
+                selectedImageUri.toString()
+            } else {
+                barang.image
+            }
+
+            val barang = Barang(
+                namabarang = namaBarang,
+                deskripsi = descBarang,
+                stok = jumlahStok,
+                harga = hargaBarang,
+                image = imagePath
+            )
+
+            // Retrieve existing ViewModel instance from the parent activity
+            val activity = requireActivity() as AdminCatalog
+            val barangViewModel = activity.barangViewModel
+
+            // Use the existing barangViewModel instance to insert data
+            barangViewModel.updateBarang(barang)
+
+            dismiss()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e("Crash", "Terjadi kesalahan: ${e.message}")
+        }
+    }
+
+    private fun openGallery() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                PICK_IMAGE_REQUEST
+            )
+        } else {
+            openGalleryIntent()
+        }
+    }
+
+    private fun openGalleryIntent() {
+        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PICK_IMAGE_REQUEST && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            openGalleryIntent()
         }
     }
 }

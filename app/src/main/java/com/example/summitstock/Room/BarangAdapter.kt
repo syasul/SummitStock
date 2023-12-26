@@ -7,13 +7,21 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Delete
 import com.bumptech.glide.Glide
 import com.example.summitstock.AdminCatalog
 import com.example.summitstock.R
 import com.example.summitstock.Room.model.Barang
 
-class BarangAdapter(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
+class BarangAdapter(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener, private val itemClickDelete: OnClickDelete) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
 
+    interface OnClickDelete {
+        fun onItemClick(barang: Barang)
+    }
+
+    fun deleteItem(barang: Barang) {
+        itemClickDelete.onItemClick(barang)
+    }
     interface OnItemClickListener {
         fun onItemClick(barang: Barang)
     }
@@ -52,6 +60,7 @@ class BarangAdapter(private var dataList: List<Barang>, private val itemClickLis
         val stokBarang: TextView = itemView.findViewById(R.id.stokBarang)
         val hargaBarang: TextView = itemView.findViewById(R.id.hargaBarang)
         val updateButton: ImageButton = itemView.findViewById(R.id.fab2)
+        val deleteButton: ImageButton = itemView.findViewById(R.id.deleteButton)
 
         init {
             // Add a click listener to the update button
