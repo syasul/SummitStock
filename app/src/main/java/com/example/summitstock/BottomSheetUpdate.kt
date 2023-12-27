@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
+import android.Manifest
+import android.graphics.BitmapFactory
 import com.example.summitstock.Room.model.Barang
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textview.MaterialTextView
@@ -31,7 +33,7 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     private var selectedImageUri: Uri? = null
     private var counterValue = 0
     private lateinit var counterTextView: MaterialTextView
-
+    var id : Long = 0
     companion object {
         fun newInstance(barang: Barang): BottomSheetUpdate {
             return BottomSheetUpdate(barang)
@@ -64,7 +66,7 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
         namaBarangEditText.setText(barang.namabarang)
         descBarangEditText.setText(barang.deskripsi)
         hargaBarangEditText.setText(barang.harga.toString())
-
+        id = barang.id
         val incrementButton: Button = view.findViewById(R.id.incrementButton)
         val decrementButton: Button = view.findViewById(R.id.decrementButton)
 
@@ -89,13 +91,22 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
 
         // Update counterText setelah counterTextView dan counterValue diinisialisasi
         updateCounterText()
-
+        imageView = view.findViewById(R.id.imageView)
         val imageUri = Uri.parse(barang.image)
+
         if (imageUri != null) {
-            imageView?.let {
-                Glide.with(requireContext())
-                    .load(imageUri)
-                    .into(it)
+            try {
+                val inputStream = requireContext().contentResolver.openInputStream(imageUri)
+                val bitmap = BitmapFactory.decodeStream(inputStream)
+                imageView!!.setImageBitmap(bitmap)
+//                imageView?.let {
+//                    Glide.with(requireContext())
+//                        .load(imageUri)
+//                        .into(it)
+//                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // Handle exception
             }
         }
 
@@ -125,14 +136,46 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            selectedImageUri = data.data
-            val bitmap = MediaStore.Images.Media.getBitmap(
-                requireContext().contentResolver,
-                selectedImageUri
-            )
-            imageView?.setImageBitmap(bitmap)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            data?.data?.also { uri ->
+                val takeFlags: Int = data.flags and (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                // Permintaan izin persisten untuk akses URI
+                if (takeFlags and Intent.FLAG_GRANT_READ_URI_PERMISSION == Intent.FLAG_GRANT_READ_URI_PERMISSION) {
+                    requireActivity().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                }
+
+                if (takeFlags and Intent.FLAG_GRANT_WRITE_URI_PERMISSION == Intent.FLAG_GRANT_WRITE_URI_PERMISSION) {
+                    requireActivity().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                }
+
+                selectedImageUri = uri
+                updateImageView()
+            }
         }
+//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+//            selectedImageUri = data.data
+//            val contentResolver = requireContext().contentResolver
+//            imageView?.let {
+//                Glide.with(requireContext())
+//                    .load(selectedImageUri)
+//                    .into(it)
+//            }
+//            selectedImageUri?.let { uri ->
+//                Glide.with(requireContext())
+//                    .load(uri)
+//                    .into(imageView!!)
+//            }
+//            imageView?.setImageBitmap(bitmap)
+//        }
+    }
+    private fun updateImageView() {
+        selectedImageUri?.let { uri ->
+            val inputStream = requireContext().contentResolver.openInputStream(uri)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            imageView!!.setImageBitmap(bitmap)
+        }
+        Log.d("URI Updated" , selectedImageUri.toString())
     }
 
     private fun updateData() {
@@ -143,17 +186,22 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
             val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toDouble()
 
             val imagePath = if (selectedImageUri != null) {
-                selectedImageUri.toString()
+                selectedImageUri.toString().also {
+                    Log.d("URI post for update", it)
+                }
             } else {
-                barang.image
+                barang.image.toString().also {
+                    Log.d("Existing URI", it)
+                }
             }
 
             val barang = Barang(
+                id = id,
                 namabarang = namaBarang,
                 deskripsi = descBarang,
                 stok = jumlahStok,
                 harga = hargaBarang,
-                image = imagePath
+                image = imagePath.toString()
             )
 
             // Retrieve existing ViewModel instance from the parent activity
@@ -162,7 +210,7 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
 
             // Use the existing barangViewModel instance to insert data
             barangViewModel.updateBarang(barang)
-
+            Log.d("Update Data", "Data Update successfully: $barang")
             dismiss()
         } catch (e: Exception) {
             e.printStackTrace()
@@ -187,7 +235,7 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     }
 
     private fun openGalleryIntent() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        val galleryIntent = Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST)
     }
 
@@ -201,4 +249,5 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
             openGalleryIntent()
         }
     }
+
 }

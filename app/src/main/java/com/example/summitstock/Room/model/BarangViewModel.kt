@@ -40,18 +40,20 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
         viewModelScope.launch {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
-                repository.updateBarang(barang)
+                repository.updateBarangById(barang)
                 getAllBarang()
                 Log.d("Update Data", "Data Update successfully: $barang")
             }
         }
     }
 
-    fun deleteBarang(barang: Barang) {
+
+
+    fun deleteBarang(id : Long) {
         viewModelScope.launch {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
-                repository.deleteBarang(barang)
+                repository.deleteBarangById(id)
                 getAllBarang()
             }
         }
@@ -61,7 +63,7 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
         viewModelScope.launch {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
-                repository.searchBarang(query)
+                repository.searchBarang(query.toString())
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.summitstock.Room
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,20 +8,19 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Delete
 import com.bumptech.glide.Glide
-import com.example.summitstock.AdminCatalog
 import com.example.summitstock.R
 import com.example.summitstock.Room.model.Barang
 
 class BarangAdapter(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener, private val itemClickDelete: OnClickDelete) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
 
     interface OnClickDelete {
-        fun onItemClickDelete(barang: Barang)
+        fun onItemClickDelete(barang: Long)
     }
 
     interface OnItemClickListener {
         fun onItemClickUpdate(barang: Barang)
+        fun onItemClickDelete(id: Long)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,9 +34,19 @@ class BarangAdapter(private var dataList: List<Barang>, private val itemClickLis
 
 
 //        holder image
+        val imageUri: Uri = Uri.parse(barang.image)
+
         Glide.with(holder.itemView.context)
-            .load(barang.image) // Replace with the actual URL or resource ID
+            .load(imageUri) // Replace with the actual URL or resource ID
             .into(holder.gambarBarang)
+//        val imagestring = barang.image
+//
+//        if(!imagestring!!.isEmpty()){
+//            val inputStream = holder.itemView.context.contentResolver.openInputStream(imageUri)
+//            val bitmap = BitmapFactory.decodeStream(inputStream)
+//            holder.gambarBarang.setImageBitmap(bitmap)
+//        }
+
 //        holder text
         holder.namaBarang.text = barang.namabarang
         holder.deskripsiBarang.text = barang.deskripsi
@@ -70,7 +80,8 @@ class BarangAdapter(private var dataList: List<Barang>, private val itemClickLis
             deleteButton.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    itemClickDelete.onItemClickDelete(dataList[position])
+                    val id = dataList[position].id
+                    itemClickDelete.onItemClickDelete(id)
                 }
             }
         }

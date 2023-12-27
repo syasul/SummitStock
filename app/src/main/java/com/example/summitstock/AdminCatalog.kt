@@ -1,6 +1,8 @@
 package com.example.summitstock
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,8 +11,11 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.summitstock.Room.AppRepository
@@ -23,8 +28,9 @@ import com.example.summitstock.Room.model.BarangViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
 
-class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.OnItemClickListener, BarangAdapter.OnClickDelete {
+class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.OnItemClickListener, BarangAdapter.OnClickDelete{
     private lateinit var buttonAdmin : ImageButton
     private lateinit var appRepository: AppRepository
     lateinit var barangViewModel: BarangViewModel
@@ -144,15 +150,18 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
     private fun performSearch(query: String) {
         // Implementasikan logika pencarian di sini
 
-            // Anda dapat menambahkan kriteria pencarian sesuai kebutuhan
+        // Anda dapat menambahkan kriteria pencarian sesuai kebutuhan
 
         // Misalnya, tampilkan hasil pencarian atau lakukan operasi lainnya
         Toast.makeText(this, "Searching for: $query", Toast.LENGTH_SHORT).show()
     }
 
-     fun onItemClickDelete(barang: Barang) {
-        appRepository.deleteBarang(barang)
-   }
+    override fun onItemClickDelete(id : Long) {
+        lifecycleScope.launch {
+            appRepository.deleteBarangById(id)
+            barangViewModel.deleteBarang(id)
+        }
+    }
 
 
     // Observer untuk memperbarui tampilan setelah perubahan
