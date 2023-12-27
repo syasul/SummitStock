@@ -29,9 +29,12 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
     private lateinit var appRepository: AppRepository
     lateinit var barangViewModel: BarangViewModel
     lateinit var adapter: BarangAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_catalog)
+
 
         val layoutSearch: TextInputLayout = findViewById(R.id.layoutSearch)
         val txtSearch: TextInputEditText = findViewById(R.id.txtSearch)
@@ -133,21 +136,23 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
         })
     }
 
-    override fun onItemClick(barang: Barang) {
+    override fun onItemClickUpdate(barang: Barang) {
         val bottomSheetFragment = BottomSheetUpdate.newInstance(barang)
         bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
     }
 
     private fun performSearch(query: String) {
         // Implementasikan logika pencarian di sini
+
+            // Anda dapat menambahkan kriteria pencarian sesuai kebutuhan
+
         // Misalnya, tampilkan hasil pencarian atau lakukan operasi lainnya
         Toast.makeText(this, "Searching for: $query", Toast.LENGTH_SHORT).show()
     }
 
-    suspend fun onItemClickDelete(barang: Barang) {
-        // Tambahkan logika penghapusan barang di sini
+     fun onItemClickDelete(barang: Barang) {
         appRepository.deleteBarang(barang)
-    }
+   }
 
 
     // Observer untuk memperbarui tampilan setelah perubahan

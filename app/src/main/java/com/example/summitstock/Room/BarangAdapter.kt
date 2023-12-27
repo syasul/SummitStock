@@ -16,14 +16,11 @@ import com.example.summitstock.Room.model.Barang
 class BarangAdapter(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener, private val itemClickDelete: OnClickDelete) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
 
     interface OnClickDelete {
-        fun onItemClick(barang: Barang)
+        fun onItemClickDelete(barang: Barang)
     }
 
-    fun deleteItem(barang: Barang) {
-        itemClickDelete.onItemClick(barang)
-    }
     interface OnItemClickListener {
-        fun onItemClick(barang: Barang)
+        fun onItemClickUpdate(barang: Barang)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,10 +64,18 @@ class BarangAdapter(private var dataList: List<Barang>, private val itemClickLis
             updateButton.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    itemClickListener.onItemClick(dataList[position])
+                    itemClickListener.onItemClickUpdate(dataList[position])
+                }
+            }
+            deleteButton.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    itemClickDelete.onItemClickDelete(dataList[position])
                 }
             }
         }
+
+
 
         fun bind(barang: Barang) {
             // Bind data to UI elements
@@ -84,7 +89,7 @@ class BarangAdapter(private var dataList: List<Barang>, private val itemClickLis
 
             // Set click listener on the update button
             updateButton.setOnClickListener {
-                itemClickListener.onItemClick(barang)
+                itemClickListener.onItemClickUpdate(barang)
             }
         }
         // Deklarasikan dan inisialisasikan elemen UI lainnya di sini

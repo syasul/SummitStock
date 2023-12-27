@@ -57,7 +57,7 @@ class BarangViewModel(private val repository: AppRepository) : ViewModel() {
         }
     }
 
-    fun searchBarang(query: String) {
+    fun searchBarang(query: BarangViewModel) {
         viewModelScope.launch {
             // Use withContext to switch to IO dispatcher for database operations
             withContext(Dispatchers.IO) {
