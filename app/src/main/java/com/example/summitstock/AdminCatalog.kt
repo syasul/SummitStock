@@ -162,10 +162,4 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapter.On
             barangViewModel.deleteBarang(id)
         }
     }
-
-
-    // Observer untuk memperbarui tampilan setelah perubahan
-
-
-
 }

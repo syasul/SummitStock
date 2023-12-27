@@ -21,6 +21,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import android.Manifest
 import android.graphics.BitmapFactory
+import android.os.Build
 import com.example.summitstock.Room.model.Barang
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textview.MaterialTextView
@@ -219,17 +220,23 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     }
 
     private fun openGallery() {
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                PICK_IMAGE_REQUEST
-            )
+        if (Build.VERSION.SDK_INT < 33) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Meminta izin READ_EXTERNAL_STORAGE untuk Android di bawah API level 30
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                    PICK_IMAGE_REQUEST
+                )
+            } else {
+                openGalleryIntent()
+            }
         } else {
+            // Langsung buka galeri untuk Android 11 (API level 30) dan lebih tinggi
             openGalleryIntent()
         }
     }
