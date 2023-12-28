@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
     app:cardCornerRadius="8dp"
@@ -17,11 +17,13 @@
         android:padding="10dp">
 
         <ImageView
-            android:background="@drawable/round_image"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:scaleType="centerCrop"
+            android:background="@drawable/round_image"
+            android:clipToOutline="true"
+            android:outlineProvider="background"
             android:id="@+id/gambarBarang"
             />
 
