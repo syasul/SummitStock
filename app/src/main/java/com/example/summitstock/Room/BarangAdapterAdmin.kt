@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.summitstock.R
 import com.example.summitstock.Room.model.Barang
 
-class BarangAdapter(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener, private val itemClickDelete: OnClickDelete) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
+class BarangAdapterAdmin(private var dataList: List<Barang>, private val itemClickListener: OnItemClickListener, private val itemClickDelete: OnClickDelete) : RecyclerView.Adapter<BarangAdapterAdmin.ViewHolder>() {
 
     interface OnClickDelete {
         fun onItemClickDelete(barang: Long)

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    app:cardCornerRadius="8dp"
+    android:background="#fff"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:background="@drawable/round_image"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/gambarBarang"
+            />
+
+
+
+        <TextView
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:id="@+id/namaBarang"
+            android:textColor="#000"
+            android:textSize="13dp"
+
+            />
+        <TextView
+            android:fontFamily="@font/poppins_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:id="@+id/deskripsiBarang"
+            android:textColor="#000"
+            android:textSize="10dp"
+            android:paddingBottom="1dp"
+            />
+
+        <TextView
+            android:fontFamily="@font/poppins_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:id="@+id/stokBarang"
+            android:textColor="#000"
+            android:textSize="10dp"
+            android:paddingBottom="1dp"
+            />
+
+        <TextView
+            android:fontFamily="@font/poppins_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:id="@+id/hargaBarang"
+            android:textColor="#000"
+            android:paddingTop="1dp"
+            android:textSize="11dp"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
