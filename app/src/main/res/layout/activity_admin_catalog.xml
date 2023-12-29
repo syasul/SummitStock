@@ -34,11 +34,12 @@
 
         <ImageButton
             android:id="@+id/buttonAdmin"
-            android:layout_width="wrap_content"
+            android:layout_width="17dp"
+            android:layout_height="27dp"
             android:background="#00ffffff"
             android:gravity="right"
             android:padding="15dp"
-            android:src="@drawable/icon_logout" />
+            android:src="@drawable/close" />
     </TableRow>
 
     <!-- Search Input -->

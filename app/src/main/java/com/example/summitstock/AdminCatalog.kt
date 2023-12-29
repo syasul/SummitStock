@@ -95,7 +95,7 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapterAdm
         buttonAdmin = findViewById(R.id.buttonAdmin)
 //        buttonAdmin.setOnClickListener(this)
         buttonAdmin.setOnClickListener {
-            val intentBiasa = Intent(this@AdminCatalog, Login::class.java)
+            val intentBiasa = Intent(this@AdminCatalog, MainActivity::class.java)
             startActivity(intentBiasa)
         }
 
@@ -111,7 +111,7 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapterAdm
         if (v != null) {
             when(v.id) {
                 R.id.buttonAdmin -> run {
-                    val intentBiasa = Intent(this@AdminCatalog, Login::class.java)
+                    val intentBiasa = Intent(this@AdminCatalog, MainActivity ::class.java)
                     startActivity(intentBiasa)
                 }
             }

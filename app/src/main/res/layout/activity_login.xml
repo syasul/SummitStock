@@ -23,7 +23,8 @@
         android:textSize="50sp"
         android:fontFamily="@font/poppins_regular"
         android:textStyle="bold"
-        android:text="Login"/>
+        android:text="Login"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/Username"
@@ -70,6 +71,8 @@
         android:backgroundTint="#2E4F4F"
         android:layout_marginRight="10sp"
         android:layout_marginLeft="10sp"
+        android:background="@drawable/custom_background_button"
+        android:textColor="@color/white"
         />
 
 
