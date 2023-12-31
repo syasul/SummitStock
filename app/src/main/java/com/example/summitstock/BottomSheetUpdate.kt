@@ -47,11 +47,9 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     ): View? {
         val view = inflater.inflate(R.layout.fragment_bottom_sheet_update, container, false)
 
-
         val namaBarangEditText: EditText = view.findViewById(R.id.namaBarang)
         val descBarangEditText: EditText = view.findViewById(R.id.descBarang)
         val hargaBarangEditText: EditText = view.findViewById(R.id.hargaBarang)
-
 
         val submitButton: Button = view.findViewById(R.id.btnSubmit)
         submitButton.setOnClickListener {
@@ -88,14 +86,13 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         // Inisialisasi counterTextView di sini setelah onCreateView selesai dijalankan
-        counterTextView = view.findViewById<MaterialTextView>(R.id.counterTextView)
+        counterTextView = view.findViewById(R.id.counterTextView)
 
         counterValue = barang.stok
 
         // Update counterText setelah counterTextView dan counterValue diinisialisasi
         updateCounterText()
         imageView = view.findViewById(R.id.imageView)
-
         val imageUri = Uri.parse(barang.image)
 
         if (imageUri != null) {
@@ -113,8 +110,6 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
                 // Handle exception
             }
         }
-
-        // ... kode lainnya
     }
 
     private fun incrementCounter() {
@@ -223,7 +218,7 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     }
 
     private fun openGallery() {
-        if (Build.VERSION.SDK_INT < 33) {
+        if (Build.VERSION.SDK_INT < 30) {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     android.Manifest.permission.READ_EXTERNAL_STORAGE

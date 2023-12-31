@@ -34,12 +34,17 @@ class Login : AppCompatActivity(), View.OnClickListener {
                 R.id.Login -> {
                     val enteredUsername = username.text.toString()
                     val enteredPassword = password.text.toString()
-
-                    if (enteredUsername == usernameAdmin && enteredPassword == passwordAdmin) {
-                        val intent = Intent(this, AdminCatalog::class.java)
-                        startActivity(intent)
+                    if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
+                        Toast.makeText(this, "Username/Password tidak boleh kosong", Toast.LENGTH_SHORT)
+                            .show()
                     } else {
-                        Toast.makeText(this, "Username/Password Salah", Toast.LENGTH_SHORT).show()
+                        if (enteredUsername == usernameAdmin && enteredPassword == passwordAdmin) {
+                            val intent = Intent(this, AdminCatalog::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(this, "Username/Password salah", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     }
                 }
             }

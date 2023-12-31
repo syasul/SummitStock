@@ -15,7 +15,7 @@
         android:background="@drawable/image_bottomsheet"
         android:clipToOutline="true"
         android:outlineProvider="background"
-        android:rotation="270"
+        android:rotation="360"
         android:layout_centerHorizontal="true"/>
 
     <Button
