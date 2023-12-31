@@ -38,7 +38,7 @@
             android:background="#fff"
             android:gravity="right"
             android:padding="15dp"
-            android:src="@drawable/icon_close2" />
+            android:src="@drawable/icon_logout" />
     </TableRow>
 
     <!-- Search Input -->

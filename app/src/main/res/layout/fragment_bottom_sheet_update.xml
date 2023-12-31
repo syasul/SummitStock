@@ -18,7 +18,6 @@
         android:rotation="270"
         android:layout_centerHorizontal="true"/>
 
-    <!-- Button to Trigger Image Selection -->
     <Button
         android:id="@+id/uploadBtn"
         android:layout_width="150dp"
@@ -33,7 +32,6 @@
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_medium"/>
 
-    <!-- Name EditText -->
     <EditText
         android:id="@+id/namaBarang"
         android:layout_width="match_parent"
@@ -48,16 +46,17 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_medium"/>
 
-    <!-- Email EditText -->
     <EditText
         android:id="@+id/descBarang"
         android:layout_width="match_parent"
         android:background="@drawable/shape_login"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:hint="Deskripsi Barang"
-        android:inputType="textEmailAddress"
+        android:inputType="textMultiLine"
         android:layout_below="@+id/namaBarang"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_medium"/>
@@ -121,7 +120,6 @@
 
     </RelativeLayout>
 
-    <!-- Password EditText -->
     <EditText
         android:id="@+id/hargaBarang"
         android:layout_width="match_parent"
@@ -136,7 +134,6 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_medium"/>
 
-    <!-- Submit Button -->
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"

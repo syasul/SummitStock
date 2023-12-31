@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="#fff"
-    android:orientation="vertical"
-    android:padding="0dp">
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,24 +22,44 @@
         android:gravity="center"
         android:textSize="50dp"
         android:textColor="@color/black"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_bold"
+
         android:textStyle="bold"
-        android:text="Wellcome"/>
+        android:text="Welcome"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:id="@+id/summitStockText"
         android:textSize="30dp"
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_regular"
         android:textStyle="bold"
         android:text="Summit Stock"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="200dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
 
+        <Button
+            android:id="@+id/buttonUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingVertical="13dp"
+            android:text="Login as User"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
-    <Button
+        <Button
         android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,27 +68,12 @@
         android:textAllCaps="false"
         android:text="Login as Admin"
         android:background="@drawable/button_background"
-        android:layout_marginRight="10sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
-        />
-
-    <Button
-        android:textSize="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:id="@+id/buttonUser"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Login as User"
-        android:textAllCaps="false"
-        android:layout_marginRight="10sp"
-        android:layout_marginLeft="10sp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button_background"
+        android:layout_marginRight="10sp"
+        android:paddingVertical="13dp"
+        android:layout_marginLeft="10sp"
+        android:textColor="@color/white"
         />
-
-
+    </LinearLayout>
 
 </LinearLayout>

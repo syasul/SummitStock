@@ -19,15 +19,13 @@
         <ImageView
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="140dp"
             android:scaleType="centerCrop"
             android:background="@drawable/round_image"
             android:clipToOutline="true"
             android:outlineProvider="background"
             android:id="@+id/gambarBarang"
             />
-
-
 
         <TextView
             android:fontFamily="@font/poppins_semibold"
@@ -43,7 +41,7 @@
         <TextView
             android:fontFamily="@font/poppins_regular"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="56dp"
             android:layout_column="1"
             android:id="@+id/deskripsiBarang"
             android:textColor="#000"
@@ -59,6 +57,7 @@
             android:id="@+id/stokBarang"
             android:textColor="#000"
             android:textSize="11dp"
+            android:layout_marginTop="1dp"
             android:paddingBottom="1dp"
             />
 
