@@ -119,7 +119,7 @@ class BottomSheetAdd : BottomSheetDialogFragment() {
             val namaBarang = view?.findViewById<EditText>(R.id.namaBarang)?.text.toString()
             val descBarang = view?.findViewById<EditText>(R.id.descBarang)?.text.toString()
             val jumlahStok = counterValue
-            val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toDouble()
+            val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toInt()
 
             val imagePath = selectedImageUri?.toString() ?: ""
 

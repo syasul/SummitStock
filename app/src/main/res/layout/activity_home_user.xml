@@ -28,7 +28,7 @@
 
             />
         <ImageButton
-            android:src="@drawable/icon_logout"
+            android:src="@drawable/icon_close2"
             android:id="@+id/buttonAdmin"
             android:background="#00ffffff"
             android:gravity="right"

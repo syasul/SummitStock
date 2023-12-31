@@ -19,7 +19,7 @@ interface BarangDao {
     suspend fun getBarangById(id: Long): Barang
 
     @Query("UPDATE barangs SET namabarang = :namaBarang, deskripsi = :deskripsi, stok = :stok, harga = :harga, image = :image WHERE id = :id")
-    suspend fun updateBarangById(id: Long, namaBarang: String, deskripsi: String, stok: Int, harga: Double, image: String)
+    suspend fun updateBarangById(id: Long, namaBarang: String, deskripsi: String, stok: Int, harga: Int, image: String)
 //    @Update
 //    suspend fun updateBarang(barangs: Barang)
 

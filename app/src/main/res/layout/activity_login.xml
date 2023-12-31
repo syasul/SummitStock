@@ -16,62 +16,92 @@
         android:src="@drawable/intersect"
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="3dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="50sp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/poppins_regular"
         android:textStyle="bold"
         android:text="Login"
         android:textColor="@color/black"/>
 
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_medium"
+        />
+
     <EditText
         android:id="@+id/Username"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:hint="username"
-        android:textSize="20sp"
+        android:hint="Username"
+        android:textSize="18sp"
         android:fontFamily="@font/poppins_regular"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="437dp"
         android:background="@drawable/shape_login"
-        android:paddingLeft="15sp"
-        android:layout_marginBottom="15sp"
+        android:paddingTop="25dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="25sp"
         android:padding="10sp"
+        android:layout_gravity="center"
         android:layout_marginRight="10sp"
         android:layout_marginLeft="10sp"/>
 
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_medium"
+        />
+
     <EditText
         android:id="@+id/Password"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="25sp"
         android:gravity="left"
-        android:hint="password"
-        android:textSize="20sp"
+        android:hint="Password"
+        android:textSize="18sp"
         android:fontFamily="@font/poppins_regular"
         tools:layout_editor_absoluteX="-3dp"
         tools:layout_editor_absoluteY="520dp"
         android:background="@drawable/shape_login"
-        android:paddingLeft="15sp"
         android:padding="10sp"
         android:inputType="textPassword"
         android:layout_marginBottom="40sp"
         android:layout_marginRight="10sp"
+        android:layout_gravity="center"
         android:layout_marginLeft="10sp"/>
 
     <Button
         android:textSize="20dp"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:id="@+id/Login"
         android:fontFamily="@font/poppins_regular"
-        android:text="LOGIN"
+        android:textAllCaps="false"
+        android:text="Login"
         android:backgroundTint="#2E4F4F"
+        android:layout_marginTop="80dp"
         android:layout_marginRight="10sp"
         android:layout_marginLeft="10sp"
-        android:background="@drawable/custom_background_button"
+        android:background="@drawable/button_background"
         android:textColor="@color/white"
         />
 

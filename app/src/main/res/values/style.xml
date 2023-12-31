@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:background">@drawable/rounded_bottom_sheet</item>
+    </style>
+
+    <style name="InvisibleBackground">
+        <!-- Format argb: #AARRGGBB -->
+        <item name="android:background">#00000000</item> <!-- Set alpha (transparansi) menjadi 0 -->
+    </style>
+
+</resources>

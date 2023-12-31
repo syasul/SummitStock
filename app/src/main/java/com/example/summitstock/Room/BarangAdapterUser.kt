@@ -41,7 +41,7 @@ class BarangAdapterUser(private var dataList: List<Barang>) : RecyclerView.Adapt
 
             namaBarang.text = barang.namabarang
             deskripsiBarang.text = barang.deskripsi
-            stokBarang.text = barang.stok.toString()
+            stokBarang.text = "Stok ${barang.stok.toString()}"
             hargaBarang.text = "RP. ${barang.harga},- / day"
         }
     }

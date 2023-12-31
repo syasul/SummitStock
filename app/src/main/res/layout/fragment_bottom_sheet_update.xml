@@ -2,83 +2,122 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingVertical="25dp"
+    android:paddingHorizontal="30dp"
+    android:clipToOutline="true"
     android:id="@+id/fab2">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:scaleType="centerCrop"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"/>
+        android:background="@drawable/image_bottomsheet"
+        android:clipToOutline="true"
+        android:outlineProvider="background"
+        android:rotation="270"
+        android:layout_centerHorizontal="true"/>
 
     <!-- Button to Trigger Image Selection -->
     <Button
         android:id="@+id/uploadBtn"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:text="Select Image"
         android:layout_below="@+id/imageView"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"/>
 
     <!-- Name EditText -->
     <EditText
         android:id="@+id/namaBarang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@drawable/shape_login"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:hint="Nama Barang"
         android:inputType="textPersonName"
         android:layout_below="@+id/uploadBtn"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_medium"/>
 
     <!-- Email EditText -->
     <EditText
         android:id="@+id/descBarang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@drawable/shape_login"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:hint="Deskripsi Barang"
         android:inputType="textEmailAddress"
         android:layout_below="@+id/namaBarang"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_medium"/>
+    <TextView
+        android:id="@+id/stokTextView"
+        android:layout_below="@+id/descBarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stok Barang"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_medium"
+        />
+
 
     <RelativeLayout
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:id="@+id/jumlahStok"
-
-        android:layout_below="@+id/descBarang"
-        android:layout_centerHorizontal="true"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:id="@+id/counter"
+        android:layout_below="@id/stokTextView"
+        android:gravity="left"
         android:layout_centerVertical="true">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/counterTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:text="0"
+            android:layout_toLeftOf="@id/incrementButton"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:textColor="@color/black"
+            android:layout_marginRight="10dp"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppins_medium"/>
 
         <Button
             android:id="@+id/incrementButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:text="+"
-            android:layout_below="@id/counterTextView"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium" />
 
         <Button
             android:id="@+id/decrementButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:maxWidth="45dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:text="-"
-            android:layout_below="@id/counterTextView"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_alignParentStart="true"/>
+            android:layout_toLeftOf="@id/counterTextView"
+
+            android:layout_alignParentStart="true"
+            android:background="@drawable/button_background"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_medium" />
 
     </RelativeLayout>
 
@@ -86,11 +125,16 @@
     <EditText
         android:id="@+id/hargaBarang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:background="@drawable/shape_login"
+        android:layout_marginTop="15dp"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:hint="Harga Barang"
         android:inputType="numberDecimal"
-        android:layout_below="@+id/jumlahStok"
-        android:layout_marginBottom="16dp"/>
+        android:layout_below="@+id/counter"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins_medium"/>
 
     <!-- Submit Button -->
     <Button
@@ -98,6 +142,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/hargaBarang"
-
-        android:text="Update" />
+        android:text="Update"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_medium"/>
 </RelativeLayout>

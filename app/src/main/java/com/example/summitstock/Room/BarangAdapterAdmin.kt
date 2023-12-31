@@ -50,7 +50,7 @@ class BarangAdapterAdmin(private var dataList: List<Barang>, private val itemCli
 //        holder text
         holder.namaBarang.text = barang.namabarang
         holder.deskripsiBarang.text = barang.deskripsi
-        holder.stokBarang.text = barang.stok.toString()
+        holder.stokBarang.text = "Stok ${barang.stok.toString()}"
         holder.hargaBarang.text = "RP. ${barang.harga},- / day"
 
 

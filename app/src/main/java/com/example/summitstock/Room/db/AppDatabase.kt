@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.summitstock.Room.model.Barang
 
-@Database(entities = [Barang::class], version = 1)
+@Database(entities = [Barang::class], version = 2)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun barangDao(): BarangDao
 

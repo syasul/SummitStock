@@ -42,8 +42,8 @@
             />
         <TextView
             android:fontFamily="@font/poppins_regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_column="1"
             android:id="@+id/deskripsiBarang"
             android:textColor="#000"
@@ -52,13 +52,13 @@
             />
 
         <TextView
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/poppins_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
             android:id="@+id/stokBarang"
             android:textColor="#000"
-            android:textSize="10dp"
+            android:textSize="11dp"
             android:paddingBottom="1dp"
             />
 

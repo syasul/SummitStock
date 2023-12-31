@@ -34,12 +34,11 @@
 
         <ImageButton
             android:id="@+id/buttonAdmin"
-            android:layout_width="17dp"
-            android:layout_height="27dp"
-            android:background="#00ffffff"
+            android:layout_width="wrap_content"
+            android:background="#fff"
             android:gravity="right"
             android:padding="15dp"
-            android:src="@drawable/close" />
+            android:src="@drawable/icon_close2" />
     </TableRow>
 
     <!-- Search Input -->

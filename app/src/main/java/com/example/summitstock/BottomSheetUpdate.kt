@@ -47,9 +47,11 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
     ): View? {
         val view = inflater.inflate(R.layout.fragment_bottom_sheet_update, container, false)
 
+
         val namaBarangEditText: EditText = view.findViewById(R.id.namaBarang)
         val descBarangEditText: EditText = view.findViewById(R.id.descBarang)
         val hargaBarangEditText: EditText = view.findViewById(R.id.hargaBarang)
+
 
         val submitButton: Button = view.findViewById(R.id.btnSubmit)
         submitButton.setOnClickListener {
@@ -86,13 +88,14 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         // Inisialisasi counterTextView di sini setelah onCreateView selesai dijalankan
-        counterTextView = view.findViewById(R.id.counterTextView)
+        counterTextView = view.findViewById<MaterialTextView>(R.id.counterTextView)
 
         counterValue = barang.stok
 
         // Update counterText setelah counterTextView dan counterValue diinisialisasi
         updateCounterText()
         imageView = view.findViewById(R.id.imageView)
+
         val imageUri = Uri.parse(barang.image)
 
         if (imageUri != null) {
@@ -184,7 +187,7 @@ class BottomSheetUpdate(private val barang: Barang) : BottomSheetDialogFragment(
             val namaBarang = view?.findViewById<EditText>(R.id.namaBarang)?.text.toString()
             val descBarang = view?.findViewById<EditText>(R.id.descBarang)?.text.toString()
             val jumlahStok = counterValue
-            val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toDouble()
+            val hargaBarang = view?.findViewById<EditText>(R.id.hargaBarang)?.text.toString().toInt()
 
             val imagePath = if (selectedImageUri != null) {
                 selectedImageUri.toString().also {
