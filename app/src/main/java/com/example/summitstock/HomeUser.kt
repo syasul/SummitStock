@@ -72,7 +72,7 @@ class HomeUser : AppCompatActivity(), View.OnClickListener {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 lifecycleScope.launch {
                     // Panggil fungsi pencarian setiap kali ada perubahan teks
-                    barangViewModel.searchBarang(s.toString())
+                    barangViewModel.searchBarang(this@HomeUser, s.toString())
                 }
             }
 

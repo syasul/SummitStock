@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -78,8 +79,7 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapterAdm
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 lifecycleScope.launch {
-                    // Panggil fungsi pencarian setiap kali ada perubahan teks
-                    barangViewModel.searchBarang(s.toString())
+                    barangViewModel.searchBarang(this@AdminCatalog, s.toString())
                 }
             }
 
@@ -107,6 +107,9 @@ class AdminCatalog : AppCompatActivity(), View.OnClickListener, BarangAdapterAdm
             bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }
     }
+
+
+
     override fun onClick(v: View?) {
         if (v != null) {
             when(v.id) {

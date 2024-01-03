@@ -40,7 +40,7 @@
         <TextView
             android:id="@+id/deskripsiBarang"
             android:fontFamily="@font/poppins_regular"
-            android:layout_width="160dp"
+            android:layout_width="150dp"
             android:layout_height="60dp"
             android:textColor="#fff"
             android:textSize="10dp"
